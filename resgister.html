@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="registration.css" />
+  </head>
+  <body>
+    
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="registration.php" name="myForm" onsubmit="return validateForm()" class="form">
+        <div class="input-box">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="name" placeholder="Enter full name" required />
+        </div>
+
+        <div class="input-box">
+          <label for="email">Email Address</label>
+          <input type="text" name="email" id="email" placeholder="Enter email address" required/>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label for="phone">Phone Number</label>
+            <input type="number" name="phone" id="phone" placeholder="Enter phone number" required />
+          </div>
+          <div class="input-box">
+            <label for="dob">Birth Date</label>
+            <input type="date" name="dob" id="dob" placeholder="Enter birth date" required />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">Male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">Others</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Permanent Address</label>
+          <input type="text" placeholder="Enter street address" name="address1" required />
+          <input type="text" placeholder="Enter street address line 2" name="address2" required />
+          <div class="column">
+            <div class="select-box" name="country">
+              <select>
+                <option hidden>Country</option>
+                <option>India</option>
+                <option>Sri Lanka</option>
+                <option>Bangladesh</option>
+                <option>Nepal</option>
+              </select>
+            </div>
+            <input type="text" placeholder="Enter your city" name="city" required />
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Enter your region" name="region" required />
+            <input type="number" placeholder="Enter postal code" name="pin" required />
+          </div>
+        </div>
+
+        <div class="input-box address">
+            <label>Communication Address</label>
+            <input type="text" placeholder="Enter street address" required />
+            <input type="text" placeholder="Enter street address line 2" required />
+            <div class="column">
+              <div class="select-box">
+                <select>
+                  <option hidden>Country</option>
+                  <option>India</option>
+                  <option>Sri Lanka</option>
+                  <option>Bangladesh</option>
+                  <option>Nepal</option>
+                </select>
+              </div>
+              <input type="text" placeholder="Enter your city" required />
+            </div>
+            <div class="column">
+              <input type="text" placeholder="Enter your region" required />
+              <input type="number" placeholder="Enter postal code" required />
+            </div>
+          </div>
+          <button>Submit</button>
+      </form>
+    </section>
+  </body>
+  <script>
+    function validateForm() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    const dob = document.getElementById("dob").value;
+    // Name validation: Should not be empty
+    if (name === '') {
+        alert('Please enter your name');
+        return false;
+    }
+    
+    // Email validation: Should match a valid email pattern
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!email.match(emailPattern)) {
+        alert('Please enter a valid email address');
+        return false;
+    }
+    
+    // Phone number validation: Should match a valid phone number pattern
+    var phonePattern = /^[0-9]{10}$/;
+    if (!phone.match(phonePattern)) {
+        alert('Please enter a valid 10-digit phone number');
+        return false;
+    }
+         // DOB validation (you can add more specific validation if needed)
+         if (dob === "") {
+        alert('Please enter your Date of Birth');
+        return false;
+    }
+    
+    // If all validations pass, the form will be submitted
+    return true;
+}
+
+</script>
+</html>
